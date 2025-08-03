@@ -11,19 +11,18 @@ pub fn solve(input: String) -> Result<String, AocError> {
         })
         .collect();
 
-    let line_differences = data.iter().map(evenly_divisible);
+    let line_differences = data.iter().map(|x| evenly_divisible(x));
     let result: u32 = line_differences.flatten().sum();
     Ok(result.to_string())
 }
 
-fn get_min_max_distance(line: &Vec<u32>) -> Option<u32> {
+fn get_min_max_distance(line: &[u32]) -> Option<u32> {
     let minmax = line.iter().minmax().into_option();
-    let distance = minmax.map(|(min, max)| max - min);
-    distance
+    minmax.map(|(min, max)| max - min)
 }
 
 // TODO: This is O(n^2), please fix
-fn evenly_divisible(line: &Vec<u32>) -> Option<u32> {
+fn evenly_divisible(line: &[u32]) -> Option<u32> {
     line.iter().find_map(|x| {
         line.iter().find_map(|y| {
             if x == y {

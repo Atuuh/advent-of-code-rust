@@ -27,7 +27,7 @@ fn part_two(input: u32) -> u32 {
     let mut result = 1;
     let mut position_values: HashMap<Position, u32> = HashMap::from([(Position::new(0, 0), 1)]);
     let mut index = 1;
-    let directions = vec![
+    let directions = [
         Position::UP,
         Position::UP + Position::RIGHT,
         Position::RIGHT,
@@ -42,8 +42,7 @@ fn part_two(input: u32) -> u32 {
         let position = get_position_from_index(index);
         result = directions
             .iter()
-            .map(|dir| position_values.get(&position.add(*dir)))
-            .flatten()
+            .filter_map(|dir| position_values.get(&position.add(*dir)))
             .sum();
         position_values.insert(position, result);
     }
@@ -88,7 +87,7 @@ impl Position {
         Self { x, y }
     }
 
-    fn is_adjacent(self: Self, other: Self) -> bool {
+    fn is_adjacent(self, other: Self) -> bool {
         self.x.abs_diff(other.x) <= 1 && self.y.abs_diff(other.y) <= 1
     }
 }
@@ -108,8 +107,7 @@ fn get_position_from_index(index: u32) -> Position {
                 3 => (ilayer - offset, -ilayer),
                 _ => (0, 0),
             };
-            // println!("index {index} layer {layer} side {side} offset {offset} (x,y) {x},{y}");
-            return Position::new(x, y);
+            Position::new(x, y)
         }
     }
 }
@@ -123,7 +121,7 @@ fn get_layer_number(value: u32) -> u32 {
             if sqrt % 2 == 0 {
                 sqrt / 2
             } else {
-                (sqrt + 1) / 2
+                sqrt.div_ceil(2)
             }
         }
     }
