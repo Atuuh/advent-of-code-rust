@@ -1,6 +1,6 @@
 use std::{fs, path::Path};
 
-use crate::year2017day04::{solve};
+use crate::year2017day05::{solve};
 
 pub enum AocError {
     Allsorts
@@ -10,10 +10,11 @@ pub mod year2017day01;
 pub mod year2017day02;
 pub mod year2017day03;
 pub mod year2017day04;
+pub mod year2017day05;
 
 fn main() {
     let year = 2017;
-    let day = 4;
+    let day = 5;
     let input_result= get_input(year, day);
 
     let result = input_result.and_then(solve);
