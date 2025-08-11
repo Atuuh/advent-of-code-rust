@@ -1,4 +1,4 @@
-use std::{collections::{HashMap, HashSet}, fmt::Display, ops::IndexMut};
+use std::{collections::{HashMap, HashSet}, fmt::Display};
 
 pub fn parse(input: &str) -> Vec<u32> {
     input
