@@ -1,4 +1,4 @@
-use std::{collections::HashSet, fmt::Display, ops::IndexMut};
+use std::{collections::{HashMap, HashSet}, fmt::Display, ops::IndexMut};
 
 pub fn parse(input: &str) -> Vec<u32> {
     input
@@ -21,7 +21,15 @@ pub fn part1(numbers: &Vec<u32>) -> impl Display {
 }
 
 pub fn part2(numbers: &Vec<u32>) -> impl Display {
-    numbers.iter().max().unwrap_or(&5)
+    let mut memory = numbers.clone();
+    let mut visited = HashMap::new();
+    let mut index = 0;
+    while !visited.contains_key(&memory){
+        visited.insert(memory.clone(), index);
+        redistribute_blocks(&mut memory);
+        index += 1;
+    }
+    index - visited[&memory]
 }
 
 fn redistribute_blocks(memory_banks: &mut Vec<u32>) {
@@ -45,7 +53,7 @@ fn redistribute_blocks(memory_banks: &mut Vec<u32>) {
 
 #[cfg(test)]
 mod tests {
-    use crate::year2017day06::redistribute_blocks;
+    use crate::year2017day06::{part2, redistribute_blocks};
 
     #[test]
     fn test_redistribute_blocks() {
@@ -58,5 +66,12 @@ mod tests {
         assert_eq!(memory, vec![0, 2, 3, 4]);
         redistribute_blocks(&mut memory);
         assert_eq!(memory, vec![1, 3, 4, 1]);
+    }
+
+    #[test]
+    fn test_part2() {
+        let memory = vec![0, 2, 7, 0];
+        let result = part2(&memory);
+        assert_eq!(result.to_string(), 4.to_string())
     }
 }
