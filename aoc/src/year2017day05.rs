@@ -38,7 +38,13 @@ mod tests {
 
     #[test]
     fn test_steps_before_exits() {
-        assert_eq!(steps_before_exits(vec![0, 3, 0, 1, -3], always_increment), 5);
-        assert_eq!(steps_before_exits(vec![0, 3, 0, 1, -3], conditional_decrement), 10);
+        assert_eq!(
+            steps_before_exits(vec![0, 3, 0, 1, -3], always_increment),
+            5
+        );
+        assert_eq!(
+            steps_before_exits(vec![0, 3, 0, 1, -3], conditional_decrement),
+            10
+        );
     }
 }

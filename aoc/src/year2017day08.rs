@@ -1,7 +1,4 @@
-use std::{
-    collections::HashMap,
-    fmt::Display,
-};
+use std::{collections::HashMap, fmt::Display};
 
 pub struct Instruction {
     check_register: String,

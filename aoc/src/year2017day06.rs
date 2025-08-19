@@ -1,4 +1,7 @@
-use std::{collections::{HashMap, HashSet}, fmt::Display};
+use std::{
+    collections::{HashMap, HashSet},
+    fmt::Display,
+};
 
 pub fn parse(input: &str) -> Vec<u32> {
     input
@@ -12,7 +15,7 @@ pub fn part1(numbers: &Vec<u32>) -> impl Display {
     let mut memory = numbers.clone();
     let mut visited = HashSet::new();
     let mut index = 0;
-    while !visited.contains(&memory){
+    while !visited.contains(&memory) {
         visited.insert(memory.clone());
         redistribute_blocks(&mut memory);
         index += 1;
@@ -24,7 +27,7 @@ pub fn part2(numbers: &Vec<u32>) -> impl Display {
     let mut memory = numbers.clone();
     let mut visited = HashMap::new();
     let mut index = 0;
-    while !visited.contains_key(&memory){
+    while !visited.contains_key(&memory) {
         visited.insert(memory.clone(), index);
         redistribute_blocks(&mut memory);
         index += 1;
@@ -39,7 +42,8 @@ fn redistribute_blocks(memory_banks: &mut Vec<u32>) {
         .enumerate()
         .rev()
         .max_by(|(_ix, x), (_iy, y)| x.cmp(y))
-        .unwrap().clone();
+        .unwrap()
+        .clone();
 
     let m_index = index.clone();
     let m_max_value = max_value.clone();
