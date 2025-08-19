@@ -11,13 +11,14 @@ pub mod year2017day03;
 pub mod year2017day04;
 pub mod year2017day05;
 pub mod year2017day06;
+pub mod year2017day08;
 
 fn main() {
     let year = 2017;
-    let day = 6;
+    let day = 8;
     let input_result = get_input(year, day).unwrap();
 
-    use crate::year2017day06::{parse, part1, part2};
+    use crate::year2017day08::{parse, part1, part2};
     let initial_time = Instant::now();
     let parsed_input = parse(input_result.as_str());
     let after_parsed_input = Instant::now();
@@ -26,7 +27,11 @@ fn main() {
     let part2_answer = part2(&parsed_input);
     let after_part2 = Instant::now();
 
-    println!("Part 1: {part1_answer} ({:?}), Part 2: {part2_answer} ({:?})", after_part1.duration_since(after_parsed_input), after_part2.duration_since(after_part1) )
+    println!(
+        "Part 1: {part1_answer} ({:?}), Part 2: {part2_answer} ({:?})",
+        after_part1.duration_since(after_parsed_input),
+        after_part2.duration_since(after_part1)
+    )
 }
 
 fn get_input(year: u16, day: u8) -> Result<String, AocError> {
