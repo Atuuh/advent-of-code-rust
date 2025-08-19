@@ -13,13 +13,14 @@ pub mod year2017day05;
 pub mod year2017day06;
 pub mod year2017day07;
 pub mod year2017day08;
+pub mod year2017day09;
 
 fn main() {
     let year = 2017;
-    let day = 8;
+    let day = 9;
     let input_result = get_input(year, day).unwrap();
 
-    use crate::year2017day08::{parse, part1, part2};
+    use crate::year2017day09::{parse, part1, part2};
     let initial_time = Instant::now();
     let parsed_input = parse(input_result.as_str());
     let after_parsed_input = Instant::now();
@@ -29,9 +30,10 @@ fn main() {
     let after_part2 = Instant::now();
 
     println!(
-        "Part 1: {part1_answer} ({:?}), Part 2: {part2_answer} ({:?})",
+        "Part 1: {part1_answer} ({:?}), Part 2: {part2_answer} ({:?}), Parsed: ({:?})",
         after_part1.duration_since(after_parsed_input),
-        after_part2.duration_since(after_part1)
+        after_part2.duration_since(after_part1),
+        after_parsed_input.duration_since(initial_time)
     )
 }
 
