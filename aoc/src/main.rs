@@ -11,6 +11,7 @@ pub mod year2017day03;
 pub mod year2017day04;
 pub mod year2017day05;
 pub mod year2017day06;
+pub mod year2017day07;
 pub mod year2017day08;
 
 fn main() {
