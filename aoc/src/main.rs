@@ -30,10 +30,11 @@ fn main() {
     let after_part2 = Instant::now();
 
     println!(
-        "Part 1: {part1_answer} ({:?}), Part 2: {part2_answer} ({:?}), Parsed: ({:?})",
+        "Part 1: {part1_answer} ({:?}), Part 2: {part2_answer} ({:?}), Parsed: ({:?}), Total: ({:?})",
         after_part1.duration_since(after_parsed_input),
         after_part2.duration_since(after_part1),
-        after_parsed_input.duration_since(initial_time)
+        after_parsed_input.duration_since(initial_time),
+        after_part2.duration_since(initial_time)
     )
 }
 
