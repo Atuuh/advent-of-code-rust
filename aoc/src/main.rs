@@ -14,13 +14,14 @@ pub mod year2017day06;
 pub mod year2017day07;
 pub mod year2017day08;
 pub mod year2017day09;
+pub mod year2017day10;
 
 fn main() {
     let year = 2017;
-    let day = 9;
+    let day = 10;
     let input_result = get_input(year, day).unwrap();
 
-    use crate::year2017day09::{parse, part1, part2};
+    use crate::year2017day10::{parse, part1, part2};
     let initial_time = Instant::now();
     let parsed_input = parse(input_result.as_str());
     let after_parsed_input = Instant::now();
